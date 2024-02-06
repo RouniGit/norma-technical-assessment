@@ -1,11 +1,18 @@
 interface BaseTaxRow {
-    year: number;
+  year: number;
+  type: string;
 }
 
 export interface PermanentTaxesRow extends BaseTaxRow {
-    monthlySalary: number;
+  monthlySalary: number;
 }
 
-export interface Taxes  {
-    rows: PermanentTaxesRow[];
+export interface FreelancerTaxesRow extends BaseTaxRow {
+  hourlyRate: number;
+  hoursPerDay: number;
+  daysPerYear: number;
+}
+
+export interface Taxes {
+  rows: (PermanentTaxesRow | FreelancerTaxesRow)[];
 }
